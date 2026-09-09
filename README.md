@@ -29,11 +29,11 @@ where:
 * $\nabla^2c$ is the two-dimensional Laplacian;
 * $\Omega=[0,1]\times[0,1]$ is the computational domain.
 
-Zero-flux boundary conditions are applied:
+The zero-flux boundary condition is
 
 $$
--D\nabla c\cdot\mathbf{n}=0
-\qquad \text{on } \partial\Omega.
+-D\frac{\partial c}{\partial n}=0
+\quad \text{on the boundary } \partial\Omega.
 $$
 
 ## Finite Element Formulation
