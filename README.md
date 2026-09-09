@@ -79,30 +79,30 @@ For $N_x=N_y=12$, the mesh contains:
 
 ### Part 2: FEM Mass and Stiffness Matrix Assembly
 
-Local mass and stiffness matrices are calculated for every linear triangular element and assembled into global matrices.
+Local mass and stiffness matrices are calculated for every linear triangular element and assembled into the global matrices.
 
 The local mass matrix is
 
-$$
+```math
 M^{(e)}
 =
 \frac{A_e}{12}
 \begin{bmatrix}
-2&1&1\\
-1&2&1\\
-1&1&2
+2 & 1 & 1 \\
+1 & 2 & 1 \\
+1 & 1 & 2
 \end{bmatrix}.
-$$
+```
 
 The local stiffness matrix is
 
-$$
+```math
 K^{(e)}
 =
-DA_eGG^T,
-$$
+D A_e G G^{T},
+```
 
-where $G$ contains the gradients of the element basis functions.
+where $A_e$ is the area of the triangular element, $D$ is the diffusion coefficient, and $G$ contains the gradients of the element basis functions.
 
 The assembled matrices are verified for:
 
@@ -116,15 +116,17 @@ The assembled matrices are verified for:
 
 The diffusion equation is solved using linear triangular finite elements in space and the implicit Euler method in time.
 
-A Gaussian initial concentration is used:
+The Gaussian initial concentration is
 
-$$
+```math
 c(x,y,0)
 =
-\exp\left(
+\exp\left[
 -\frac{(x-x_c)^2+(y-y_c)^2}{2\sigma^2}
-\right).
-$$
+\right].
+```
+
+Here, $(x_c,y_c)$ is the centre of the concentration peak and $\sigma$ controls its width.
 
 The numerical results demonstrate that:
 
@@ -138,34 +140,38 @@ The numerical results demonstrate that:
 
 The numerical solver is verified using the analytical solution
 
-$$
+```math
 c_{\mathrm{exact}}(x,y,t)
 =
 1+
-0.25e^{-2\pi^2Dt}
+0.25\exp(-2\pi^2Dt)
 \cos(\pi x)\cos(\pi y).
-$$
+```
 
-For a mesh with 169 nodes and 288 elements:
+For a mesh containing 169 nodes and 288 triangular elements:
 
-* discrete $L^2$ error: approximately $5.62\times10^{-4}$;
-* maximum nodal error: approximately $1.53\times10^{-3}$.
+* the discrete $L^2$ error is approximately $5.62\times10^{-4}$;
+* the maximum nodal error is approximately $1.53\times10^{-3}$.
 
-The spatial convergence rates approach 2:
+The spatial convergence rates approach 2. Therefore, the spatial error behaves approximately as
 
-$$
-\|e_h\|_{L^2}=O(h^2),
-$$
+```math
+\lVert e_h\rVert_{L^2}
+=
+O(h^2).
+```
 
-confirming the expected second-order spatial accuracy of linear triangular finite elements.
+This confirms the expected second-order spatial accuracy of the linear triangular finite element method.
 
-The temporal convergence rates approach 1:
+The temporal convergence rates approach 1. Therefore, the temporal error behaves approximately as
 
-$$
-\|e_{\Delta t}\|_{L^2}=O(\Delta t),
-$$
+```math
+\lVert e_{\Delta t}\rVert_{L^2}
+=
+O(\Delta t).
+```
 
-confirming the expected first-order accuracy of the implicit Euler method.
+This confirms the expected first-order temporal accuracy of the implicit Euler method.
 
 
 ## Numerical Verification Summary
@@ -225,5 +231,7 @@ Future stages will include:
 ## Author
 
 **Zainab Qadeer**
+
 BS Mathematics, University of Engineering and Technology Lahore
+
 Research interests: numerical PDEs, finite element methods, scientific computing, mathematical modelling, and mathematical biology.
