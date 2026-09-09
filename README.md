@@ -1,46 +1,44 @@
-# Two-Dimensional FEM Simulation of Ion Transport and pH Evolution
-
+# **Verified Two-Dimensional Finite Element Diffusion Solver**
 ## Overview
 
-This repository provides a step-by-step development and verification of a 2D finite element method (FEM) framework in Python. The project starts with the generation of triangular mesh, followed by matrix assembly and time-dependent diffusion. Then, the verification of the numerical solver by an analytical solution and convergence studies.
+This repository presents the step-by-step development and verification of a two-dimensional finite element method (FEM) diffusion solver in Python. The project begins with triangular mesh generation, followed by FEM mass and stiffness matrix assembly, time-dependent diffusion using the implicit Euler method, and verification against an analytical solution through spatial and temporal convergence studies.
 
-The resulting diffusion framework will provide the numerical basis to model coupled hydrogen-ion and hydroxide-ion transport and the evolution of pH.
+The resulting framework provides a verified numerical foundation for future work on coupled hydrogen-ion and hydroxide-ion transport and pH evolution.
+
 ## Project Motivation
 
-Transport of ions and change of pH are important in electrochemical and biological systems. Such processes are typically described by time-dependent partial differential equations, which are not always analytically tractable, even in complicated domains.
+Diffusion and transport processes arise in many biological, chemical, and electrochemical systems. These processes are commonly governed by time-dependent partial differential equations that may not have analytical solutions, especially on complex computational domains.
 
-In this work the numerical model is developed in a step-by-step manner and each component, i.e. mesh generation, FEM assembly, time integration, and solver accuracy is verified before coupled ion transport is introduced.
+In this project, the numerical solver is developed systematically. Each component—including mesh generation, FEM assembly, time integration, numerical verification, and convergence analysis—is tested before extending the framework to a more advanced coupled ion-transport model.
 
 ## Governing Diffusion Equation
 
 The current model solves the two-dimensional diffusion equation:
 
-The two-dimensional diffusion equation is
-
 ```math
 \frac{\partial c}{\partial t}
 =
 D\left(
-\frac{\partial^2 c}{\partial x^2}
+\frac{\partial^2c}{\partial x^2}
 +
-\frac{\partial^2 c}{\partial y^2}
+\frac{\partial^2c}{\partial y^2}
 \right),
 \qquad (x,y)\in\Omega.
 ```
 
 where:
 
-* $c(x,y,t)$ is the concentration;
-* $D$ is the diffusion coefficient;
-* $\nabla^2c$ is the two-dimensional Laplacian;
-* $\Omega=[0,1]\times[0,1]$ is the computational domain.
+$c(x,y,t)$ is the concentration;
+$D$ is the diffusion coefficient;
+$\nabla^2c$ is the two-dimensional Laplacian;
+$\Omega=[0,1]\times[0,1]$ is the computational domain.
 
 The zero-flux boundary condition is
 
-$$
--D\frac{\partial c}{\partial n}=0
-\quad \text{on the boundary } \partial\Omega.
-$$
+-D\frac{\partial c}{\partial n}=0,
+\qquad (x,y)\in\partial\Omega.
+
+This condition means that no concentration enters or leaves the computational domain.
 
 ## Finite Element Formulation
 
@@ -220,9 +218,9 @@ This confirms the expected first-order temporal accuracy of the implicit Euler m
 
 ## Future Development
 
-The verified diffusion solver will be extended to coupled concentrations of hydrogen and hydroxide ions.
+This verified diffusion solver will provide the foundation for a separate advanced project on coupled hydrogen-ion and hydroxide-ion transport.
 
-The pH is calculated from the hydrogen-ion concentration using
+In the future coupled model, pH will be calculated from the hydrogen-ion concentration using
 
 ```math
 \mathrm{pH}
@@ -230,15 +228,15 @@ The pH is calculated from the hydrogen-ion concentration using
 -\log_{10}\left(c_{\mathrm{H}^{+}}\right).
 ```
 
-Future stages will include:
+The future project will include:
 
-* different diffusion coefficients for ionic species;
-* coupled hydrogen and hydroxide transport;
-* reaction terms;
-* electrode boundary fluxes;
-* time-dependent pH distributions;
-* parameter and sensitivity studies;
-* numerical verification of the coupled model.
+different diffusion coefficients for ionic species;
+coupled hydrogen-ion and hydroxide-ion transport;
+neutralization reaction terms;
+electrode boundary fluxes;
+time-dependent pH distributions;
+parameter and sensitivity studies;
+numerical verification of the coupled model.
 
 ## Author
 
