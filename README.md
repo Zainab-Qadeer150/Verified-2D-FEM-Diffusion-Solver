@@ -28,15 +28,17 @@ D\left(
 
 where:
 
-$c(x,y,t)$ is the concentration;
-$D$ is the diffusion coefficient;
-$\nabla^2c$ is the two-dimensional Laplacian;
-$\Omega=[0,1]\times[0,1]$ is the computational domain.
+* **c(x, y, t)** represents the concentration at position **(x, y)** and time **t**;
+* **D** represents the diffusion coefficient;
+* **∇²c** represents the two-dimensional Laplacian of concentration;
+* **Ω = [0, 1] × [0, 1]** represents the unit-square computational domain.
 
 The zero-flux boundary condition is
 
+```math
 -D\frac{\partial c}{\partial n}=0,
 \qquad (x,y)\in\partial\Omega.
+```
 
 This condition means that no concentration enters or leaves the computational domain.
 
