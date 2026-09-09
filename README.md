@@ -220,13 +220,15 @@ This confirms the expected first-order temporal accuracy of the implicit Euler m
 
 ## Future Development
 
-The verified diffusion solver will be extended to coupled concentrations of hydrogen and hydroxide ions. The resulting hydrogen-ion concentration will be used to calculate pH:
+The verified diffusion solver will be extended to coupled concentrations of hydrogen and hydroxide ions.
 
-$$
+The pH is calculated from the hydrogen-ion concentration using
+
+```math
 \mathrm{pH}
 =
--\log_{10}\left(c_{\mathrm{H}^+}\right).
-$$
+-\log_{10}\left(c_{\mathrm{H}^{+}}\right).
+```
 
 Future stages will include:
 
