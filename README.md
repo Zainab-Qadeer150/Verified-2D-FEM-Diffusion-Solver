@@ -58,11 +58,11 @@ where $M$ is the global mass matrix and $K$ is the global stiffness matrix.
 
 The implicit Euler method gives
 
-$$
-\left(M+\Delta tK\right)\mathbf{c}^{n+1}
+```math
+\left(M+\Delta t\,K\right)\mathbf{c}^{\,n+1}
 =
-M\mathbf{c}^{n}.
-$$
+M\mathbf{c}^{\,n}.
+```
 
 ## Implemented Parts
 
