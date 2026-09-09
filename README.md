@@ -15,12 +15,18 @@ In this work the numerical model is developed in a step-by-step manner and each 
 
 The current model solves the two-dimensional diffusion equation:
 
-$$
+The two-dimensional diffusion equation is
+
+```math
 \frac{\partial c}{\partial t}
 =
-D\nabla^2c
-\qquad \text{in } \Omega,
-$$
+D\left(
+\frac{\partial^2 c}{\partial x^2}
++
+\frac{\partial^2 c}{\partial y^2}
+\right),
+\qquad (x,y)\in\Omega.
+```
 
 where:
 
@@ -40,9 +46,13 @@ $$
 
 Using linear triangular basis functions, the semi-discrete FEM system is
 
-$$
-M\frac{d\mathbf{c}}{dt}+K\mathbf{c}=\mathbf{0},
-$$
+```math
+M\frac{d\mathbf{c}}{dt}
++
+K\mathbf{c}
+=
+\mathbf{0}.
+```
 
 where $M$ is the global mass matrix and $K$ is the global stiffness matrix.
 
